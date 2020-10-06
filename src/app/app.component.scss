@@ -1,0 +1,28 @@
+
+
+  img{
+    width: 150px;
+    margin-right: 50px;
+  }
+
+  a{
+    // margin-right:10px;
+    padding: 10px;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  .link-with-devider{
+    border-left: 1px solid #cccccc7a;
+    padding-left: 10px;
+    
+  }
+
+  .active{
+    // text-decoration: underline;
+    background-color: #673ab7;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 3px #ccc;
+  }

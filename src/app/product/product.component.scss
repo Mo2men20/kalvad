@@ -1,0 +1,52 @@
+mat-card {
+    text-align: center;
+    padding-top: 55px;
+    margin-bottom: 10px;
+
+    img{
+        width: 75px;
+      }
+
+      .unit{
+        margin-right: 5px;
+        font-size: 10px;
+      }
+
+      .price{
+        font-size: 18px;
+      }
+
+      .product-name{
+          font-size: 23px;
+      }
+}
+  
+.product-card:hover{
+    -webkit-animation: scale 0.5s ease-in-out 0s;
+    -moz-animation: scale 0.5s ease-in-out 0s;
+    -o-animation: scale 0.5s ease-in-out 0s;
+    animation: scale 0.5s ease-in-out 0s;
+    background-color:#f5f5f5;
+ }
+
+ @keyframes scale {
+    0% {}
+    50% {transform: scale(1.1)}
+}
+
+@-webkit-keyframes scale {
+    0% {}
+    50% {transform: scale(1.1)}
+
+}
+
+@-moz-keyframes scale {
+    0% {}
+    50% {transform: scale(1.1)}
+
+}
+
+@-ms-keyframes scale {
+    0% {}
+    50% {transform: scale(1.05)}
+}
