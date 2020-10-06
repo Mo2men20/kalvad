@@ -1,0 +1,28 @@
+<mat-card [ngClass]="{'product-card':isForCart==false}">
+    <img mat-card-image [src]="product.imgSrc" *ngIf='!isForCart'>
+    <mat-card-content>
+        <p class="product-name">{{product.name}}</p>
+        <p>
+            <span class="unit">AED</span>
+            <span class="price">{{product.price | number: '1.2-2'}}</span>
+        </p>
+        <p *ngIf='isForCart'>
+            <mat-select [value]='product.quantity' (selectionChange)='quantityChanged(product,$event)'>
+                <mat-option *ngFor='let number of [1,2,3,4,5,6,7,8,9,10]' [value]='number'>
+                    {{number}}
+                    <span class="unit">kg(s)</span>
+                </mat-option>
+            </mat-select>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)='productsService.addToCart(product)' color='primary' mat-button *ngIf='!product.inCart'>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
+            Add to cart
+        </button>
+        <button (click)='productsService.removeFromCart(product)' color='warn' mat-button *ngIf='product.inCart'>
+            <mat-icon aria-hidden="false" aria-label="Example home icon">remove_shopping_cart</mat-icon>
+            Remove from cart
+        </button>
+    </mat-card-actions>
+</mat-card>
