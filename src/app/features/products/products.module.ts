@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
@@ -19,17 +19,17 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
-        path:'list',
-        component:ProductsListComponent
+        path: 'list',
+        component: ProductsListComponent
       },
       {
-        path:'cart',
-        component:ShoppingCartComponent
+        path: 'cart',
+        component: ShoppingCartComponent
       },
       {
-        path:'',
-        redirectTo:'list',
-        pathMatch:'full'
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
       }
     ]
   }];

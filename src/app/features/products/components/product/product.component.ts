@@ -10,12 +10,12 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductComponent{
 
-  @Input() product:Product;
-  @Input() isForCart:boolean;
-  constructor(public productsService:ProductsService) { }
+  @Input() product: Product;
+  @Input() isForCart: boolean;
+  constructor(public productsService: ProductsService) { }
 
-  quantityChanged(product:Product,event:MatSelectChange){
-    this.productsService.changeQuantity(product,event.value);
+  quantityChanged(product: Product, event: MatSelectChange): void{
+    this.productsService.changeQuantity(product, event.value);
   }
 
 }

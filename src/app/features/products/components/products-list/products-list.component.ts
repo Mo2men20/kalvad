@@ -8,6 +8,6 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsListComponent {
 
-  constructor(public productsService:ProductsService) { }
+  constructor(public productsService: ProductsService) { }
 
 }
