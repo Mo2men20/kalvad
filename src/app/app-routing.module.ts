@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
   path:'products',
-  component:ProductsListComponent
-},
-{
-  path:'cart',
-  component:ShoppingCartComponent
+  loadChildren:()=>import('./features/products/products.module').then(m=>m.ProductsModule)
 },
 {
   path:'',

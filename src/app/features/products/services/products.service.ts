@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of, Subject } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { GeneralService } from 'src/app/services/general.service';
 import { Product } from '../models/product.model';
-import { GeneralService } from './general.service';
 
 const products:Product[] = [
   {

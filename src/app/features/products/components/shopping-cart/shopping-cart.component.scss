@@ -1,0 +1,42 @@
+.container{
+    padding-top: 50px;
+
+    .details{
+      padding-left: 20px !important;
+      margin-top: 10px !important;
+    }
+
+    mat-divider{
+      margin-top:30px;
+    }
+
+    .unit{
+      margin-right: 5px;
+      font-size: 10px;
+    }
+
+    span:not(.unit){
+      margin-right: 5px;
+    }
+
+    .place-order-btn{
+      justify-content: flex-end;
+      margin-bottom: 20px;
+      .col-sm-4{
+        text-align: end;
+      }
+    }
+
+    .product-name{
+      font-size: 23px !important;
+    }
+
+  .price{
+    font-size: 18px;
+    }
+
+  .products-in-cart{
+    border-right: 1px solid #e0e0e0;
+  }
+}
+
