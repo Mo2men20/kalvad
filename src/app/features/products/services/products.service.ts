@@ -26,6 +26,35 @@ const source:Product[] = [
     inCart:false,
     imgSrc:'assets/svg/onion.svg'
   }
+  // ,
+  // {
+  //   id:4,
+  //   name:"Unknown#1",
+  //   price:8,
+  //   inCart:false,
+  //   imgSrc:'assets/svg/question-mark-draw.svg'
+  // },
+  // {
+  //   id:5,
+  //   name:"Unknown#2",
+  //   price:5,
+  //   inCart:false,
+  //   imgSrc:'assets/svg/question-mark-draw.svg'
+  // },
+  // {
+  //   id:6,
+  //   name:"Unknown#3",
+  //   price:7,
+  //   inCart:false,
+  //   imgSrc:'assets/svg/question-mark-draw.svg'
+  // },
+  // {
+  //   id:7,
+  //   name:"Unknown#4",
+  //   price:3,
+  //   inCart:false,
+  //   imgSrc:'assets/svg/question-mark-draw.svg'
+  // }
 ];
 
 @Injectable({
