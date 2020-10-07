@@ -9,7 +9,7 @@ describe('ShoppingCartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[MatSnackBarModule],
+      imports: [MatSnackBarModule],
       declarations: [ ShoppingCartComponent ]
     })
     .compileComponents();

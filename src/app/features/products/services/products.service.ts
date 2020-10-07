@@ -45,7 +45,7 @@ export class ProductsService {
   );
 
   public addToCart(product: Product): void {
-    let productToUpdate : Product = this.getProductToUpdate(product);
+    const productToUpdate: Product = this.getProductToUpdate(product);
 
     productToUpdate.quantity = 1;
     productToUpdate.inCart = true;
@@ -55,16 +55,16 @@ export class ProductsService {
   }
 
   public removeFromCart(product: Product): void {
-    let productToUpdate : Product = this.getProductToUpdate(product);
+    const productToUpdate: Product = this.getProductToUpdate(product);
 
     productToUpdate.inCart = false;
-    
+
     this.refreshStreams();
     this.generalService.showSuccess();
   }
 
   public changeQuantity(product: Product, quanitity: number): void {
-    let productToUpdate : Product = this.getProductToUpdate(product);
+    const productToUpdate: Product = this.getProductToUpdate(product);
 
     productToUpdate.quantity = quanitity;
 
@@ -77,12 +77,12 @@ export class ProductsService {
     this.refreshStreams();
   }
 
-  private refreshStreams() : void {
+  private refreshStreams(): void {
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
   }
 
-  private getProductToUpdate(product:Product) : Product {
+  private getProductToUpdate(product: Product): Product {
     return this.productsCopy.find(p => p.id === product.id);
   }
 }
