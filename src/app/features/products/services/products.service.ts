@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { from, Observable, of, Subject } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, of, Subject } from 'rxjs';
+import {map, startWith, tap} from 'rxjs/operators';
 import { GeneralService } from 'src/app/services/general.service';
 import { Product } from '../models/product.model';
 
-const products:Product[] = [
+const source:Product[] = [
   {
     id:1,
     name:"Potatoes",
@@ -34,12 +34,12 @@ const products:Product[] = [
 export class ProductsService {
   constructor(private generalService:GeneralService) { }
 
-  productsCopy:Product[] = Object.assign([],products);
+  productsCopy:Product[] = source.map(p => Object.assign({},p));
 
-  productsSubject = new Subject<Product[]>();
-  products$ = this.productsSubject.asObservable().pipe(startWith(this.productsCopy));
+  productsSubject = new BehaviorSubject<Product[]>(source);
+  products$ = this.productsSubject.asObservable();
 
-  cartSubject = new Subject<Product[]>();
+  cartSubject = new BehaviorSubject<Product[]>([]);
   cartProducts$ = this.products$.pipe(
     map(products=>products.filter(p => p.inCart))
   );
@@ -70,7 +70,8 @@ export class ProductsService {
   }
 
   clearCart(){
-    this.productsCopy = Object.assign([],products);
+    this.productsCopy = source.map(p => Object.assign({},p));
+
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
   }

@@ -25,7 +25,10 @@
                 <div mat-subheader>Total : <span class="price">{{calculateTotal(products) | number: '1.2-2'}}</span> AED</div>
             </mat-list>
             <div class='row place-order-btn'>
-                <div class="col-sm-4 col-lg-4 col-md-4">
+              <div class="col-sm-4 col-lg-4 col-md-4">
+                <button (click)='productsService.clearCart()' mat-raised-button color="warn">Clear cart</button>
+                </div>
+                <div class="col-sm-4 col-lg-2 col-md-2">
                     <button (click)='placeOrder(products)' mat-raised-button color="primary">Place order</button>
                 </div>
             </div>
