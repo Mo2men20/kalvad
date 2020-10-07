@@ -26,35 +26,6 @@ const source: Product[] = [
     inCart: false,
     imgSrc: 'assets/svg/onion.svg'
   }
-  // ,
-  // {
-  //   id:4,
-  //   name:"Unknown#1",
-  //   price:8,
-  //   inCart:false,
-  //   imgSrc:'assets/svg/question-mark-draw.svg'
-  // },
-  // {
-  //   id:5,
-  //   name:"Unknown#2",
-  //   price:5,
-  //   inCart:false,
-  //   imgSrc:'assets/svg/question-mark-draw.svg'
-  // },
-  // {
-  //   id:6,
-  //   name:"Unknown#3",
-  //   price:7,
-  //   inCart:false,
-  //   imgSrc:'assets/svg/question-mark-draw.svg'
-  // },
-  // {
-  //   id:7,
-  //   name:"Unknown#4",
-  //   price:3,
-  //   inCart:false,
-  //   imgSrc:'assets/svg/question-mark-draw.svg'
-  // }
 ];
 
 @Injectable({
@@ -74,8 +45,8 @@ export class ProductsService {
   );
 
   addToCart(product: Product): void {
-    this.productsCopy.filter(p => p.id === product.id)[0].quantity = 1;
-    this.productsCopy.filter(p => p.id === product.id)[0].inCart = true;
+    this.productsCopy.find(p => p.id === product.id).quantity = 1;
+    this.productsCopy.find(p => p.id === product.id).inCart = true;
 
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
@@ -84,7 +55,7 @@ export class ProductsService {
   }
 
   removeFromCart(product: Product): void {
-    this.productsCopy.filter(p => p.id === product.id)[0].inCart = false;
+    this.productsCopy.find(p => p.id === product.id).inCart = false;
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
 
@@ -92,7 +63,7 @@ export class ProductsService {
   }
 
   changeQuantity(product: Product, quanitity: number): void {
-    this.productsCopy.filter(p => p.id === product.id)[0].quantity = quanitity;
+    this.productsCopy.find(p => p.id === product.id).quantity = quanitity;
 
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
