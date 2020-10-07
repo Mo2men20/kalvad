@@ -11,15 +11,15 @@ import { ProductsService } from '../../services/products.service';
 export class ShoppingCartComponent{
 
   constructor(public productsService: ProductsService,
-              public generalService: GeneralService) { }
+              private generalService: GeneralService) { }
 
-  calculateTotal(products: Product[]): number{
+  private calculateTotal(products: Product[]): number{
     let sum = 0;
     products.forEach(p => sum += p.quantity * p.price);
     return sum;
   }
 
-  placeOrder(products: Product[]): void{
+  private placeOrder(products: Product[]): void{
     console.table(products);
     this.generalService.showSuccess('You order is placed.');
   }

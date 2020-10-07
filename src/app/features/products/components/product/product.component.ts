@@ -14,7 +14,7 @@ export class ProductComponent{
   @Input() isForCart: boolean;
   constructor(public productsService: ProductsService) { }
 
-  quantityChanged(product: Product, event: MatSelectChange): void{
+  private quantityChanged(product: Product, event: MatSelectChange): void{
     this.productsService.changeQuantity(product, event.value);
   }
 

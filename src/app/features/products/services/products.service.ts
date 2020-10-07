@@ -34,45 +34,55 @@ const source: Product[] = [
 export class ProductsService {
   constructor(private generalService: GeneralService) { }
 
-  productsCopy: Product[] = source.map(p => Object.assign({}, p));
+  private productsCopy: Product[] = source.map(p => Object.assign({}, p));
 
-  productsSubject = new BehaviorSubject<Product[]>(source);
-  products$ = this.productsSubject.asObservable();
+  private productsSubject = new BehaviorSubject<Product[]>(source);
+  public products$ = this.productsSubject.asObservable();
 
-  cartSubject = new BehaviorSubject<Product[]>([]);
-  cartProducts$ = this.products$.pipe(
+  private cartSubject = new BehaviorSubject<Product[]>([]);
+  public cartProducts$ = this.products$.pipe(
     map(products => products.filter(p => p.inCart))
   );
 
-  addToCart(product: Product): void {
-    this.productsCopy.find(p => p.id === product.id).quantity = 1;
-    this.productsCopy.find(p => p.id === product.id).inCart = true;
+  public addToCart(product: Product): void {
+    let productToUpdate : Product = this.getProductToUpdate(product);
 
-    this.productsSubject.next(this.productsCopy);
-    this.cartSubject.next(this.productsCopy);
+    productToUpdate.quantity = 1;
+    productToUpdate.inCart = true;
 
+    this.refreshStreams();
     this.generalService.showSuccess();
   }
 
-  removeFromCart(product: Product): void {
-    this.productsCopy.find(p => p.id === product.id).inCart = false;
-    this.productsSubject.next(this.productsCopy);
-    this.cartSubject.next(this.productsCopy);
+  public removeFromCart(product: Product): void {
+    let productToUpdate : Product = this.getProductToUpdate(product);
 
+    productToUpdate.inCart = false;
+    
+    this.refreshStreams();
     this.generalService.showSuccess();
   }
 
-  changeQuantity(product: Product, quanitity: number): void {
-    this.productsCopy.find(p => p.id === product.id).quantity = quanitity;
+  public changeQuantity(product: Product, quanitity: number): void {
+    let productToUpdate : Product = this.getProductToUpdate(product);
 
-    this.productsSubject.next(this.productsCopy);
-    this.cartSubject.next(this.productsCopy);
+    productToUpdate.quantity = quanitity;
+
+    this.refreshStreams();
   }
 
-  clearCart(): void {
+  public clearCart(): void {
     this.productsCopy = source.map(p => Object.assign({}, p));
 
+    this.refreshStreams();
+  }
+
+  private refreshStreams() : void {
     this.productsSubject.next(this.productsCopy);
     this.cartSubject.next(this.productsCopy);
+  }
+
+  private getProductToUpdate(product:Product) : Product {
+    return this.productsCopy.find(p => p.id === product.id);
   }
 }
