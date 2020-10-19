@@ -1,4 +1,4 @@
-<div class='container' *ngIf='productsService.cartProducts$ | async as products'>
+<div class='container' *ngIf='cart$ | async as products'>
     <div class='row' *ngIf='products.length > 0'>
         <div class='products-in-cart col-md-4 col-lg-4 col-sm-12'>
             <h2>Products in your shopping cart</h2>

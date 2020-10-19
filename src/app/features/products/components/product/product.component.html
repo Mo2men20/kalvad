@@ -16,11 +16,11 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button (click)='productsService.addToCart(product)' color='primary' mat-button *ngIf='!product.inCart'>
+        <button (click)='addToCart(product)' color='primary' mat-button *ngIf='!product.inCart'>
             <mat-icon aria-hidden='false' aria-label='Example home icon'>add_shopping_cart</mat-icon>
             Add to cart
         </button>
-        <button (click)='productsService.removeFromCart(product)' color='warn' mat-button *ngIf='product.inCart'>
+        <button (click)='removeFromCart(product)' color='warn' mat-button *ngIf='product.inCart'>
             <mat-icon aria-hidden='false' aria-label='Example home icon'>remove_shopping_cart</mat-icon>
             Remove from cart
         </button>

@@ -12,6 +12,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductComponent } from './components/product/product.component';
 import { LayoutComponent } from './layout/layout.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/products.effects';
+import { reducer } from './store/products.reducers';
 
 const routes: Routes = [
   {
@@ -32,7 +36,8 @@ const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  }];
+  }
+];
 
 @NgModule({
   declarations: [
@@ -48,8 +53,10 @@ const routes: Routes = [
     MatIconModule,
     MatSelectModule,
     MatListModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('products', reducer),
+    EffectsModule.forFeature([ProductsEffects])
   ],
   exports: [RouterModule]
 })
-export class ProductsModule { }
+export class ProductsModule {}
