@@ -46,7 +46,7 @@ export function reducer(
 
       let clonedState:ProductsState = cloneState(state);
       let product = getProductToUpdate(state,action.payload as number);
-
+      product.inCart = true;
       clonedState.cart.push(product);
 
       return clonedState;
